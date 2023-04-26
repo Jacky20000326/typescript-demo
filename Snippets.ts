@@ -15,3 +15,15 @@ type ketAsUnion  = keyof typeof  GENDER
 type Gender = {
     [p in GENDER]:string
 } 
+
+const brands = ['Apple', 'Samsung', 'Sony', 'Xiaomi'] as const;
+
+
+const BRAND = Object.freeze({
+    APPLE: 'Apple',
+    SAMSUNG: 'Samsung',
+    XIAOMI: 'Xiaomi',
+    SONY: 'Sony',
+    } as const);
+
+type Brand = typeof BRAND[keyof typeof BRAND];
