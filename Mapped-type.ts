@@ -34,3 +34,28 @@ type HandledEvent = {
 
 // 结论
 // mapped type 最重要的一步。它們都有跑一個迴圈把所有元素依序取出來的概念。
+
+
+// Optional Properties
+
+type Person = {
+    firstNmae: string
+    lastName:string
+    fullName:string
+}
+
+type ToOptionalProperty<T> = {
+    [K in keyof T]?:T[K]
+}
+// 一開始 Person 中並不是每個 Property 都是 optional 的，但經過 ToOptionalProperty，所有 Properties 就都會是 Optional 的：
+type PersonOptionalType = ToOptionalProperty<Person>
+
+// Readonly Properties(增加/移除)
+type ToReadOnlyProperty<T> = {
+    readonly [K in keyof T]: T[K]
+}
+
+type PersonToPartial = Partial<Person>
+type PersonToReadRequired= Required<Person>
+type PersonToReadOnly = Readonly<Person>
+
